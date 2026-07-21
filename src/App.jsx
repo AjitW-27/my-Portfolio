@@ -1,23 +1,32 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./Componants/Navbar";
-import Home from "./Componants/Home";
-import About from "./Componants/About";
-import Projects from "./Componants/Projects";
-import Contact from "./Componants/Contact";
-import Footer from "./Componants/Footer";
+import React, { Suspense, lazy } from "react";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
+import ScrollToTop from "./components/layout/ScrollToTop";
+import PageLoader from "./components/ui/PageLoader";
+
+// Lazy-loaded route pages for faster initial load.
+const HomePage = lazy(() => import("./pages/HomePage"));
+const AboutPage = lazy(() => import("./pages/AboutPage"));
+const ProjectsPage = lazy(() => import("./pages/ProjectsPage"));
+const ContactPage = lazy(() => import("./pages/ContactPage"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-[#0f172a] text-white font-sans">
+      <div className="app-bg min-h-screen text-[var(--text-primary)] font-body">
+        <ScrollToTop />
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
+        <Suspense fallback={<PageLoader />}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </Suspense>
         <Footer />
       </div>
     </Router>
