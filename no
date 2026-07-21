@@ -1,0 +1,10 @@
+* [33m5e0e3e2[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m Updated portfolio
+* [33m35c5100[m Updated something
+* [33m246cc13[m[33m ([m[1;31morigin/gh-pages[m[33m)[m Updates
+* [33m9cb2862[m Updates
+* [33m503afe8[m Updates
+* [33m1f90be0[m Updates
+* [33ma490059[m Updates
+* [33mde9279e[m Updates
+* [33m09f8100[m Updates
+* [33mc2a5849[m Updates
